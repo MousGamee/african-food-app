@@ -11,6 +11,7 @@ import HorizontalFoodCard from '../../components/HorizontalFoodCard';
 import VerticalFoodCard from '../../components/VerticalFoodCard'
 
 import {COLORS, SIZES,icons, FONTS, dummyData } from '../../constants'
+import FilterModal from './FilterModal';
 
 // Section part
 const Section = ({ title, onPress, children }) => {
@@ -53,6 +54,7 @@ const Home = () => {
     const [recommends, setRecommends] = useState([])
     const [menuList, setMenuList] = useState([])
 
+    // Show the modal box
     const [showFilterModal, setShowFilterModal] = useState(false)
 
     useEffect(() => {
@@ -323,6 +325,15 @@ const Home = () => {
         >
            {/* Search  */}
            {renderSearch()}
+
+           {/* Filter Modal  */}
+        
+               {showFilterModal &&
+                <FilterModal
+                    isVisible={showFilterModal}
+                    onClose={() => setShowFilterModal(false)}
+                />}
+            
 
            {/* List  */}
            <FlatList 
